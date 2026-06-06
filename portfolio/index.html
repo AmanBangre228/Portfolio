@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>World of Aman — Portfolio RPG</title>
+  <meta name="description" content="An interactive RPG portfolio of Aman Bangre — Mechanical Engineer, CFD Analyst, Drone Builder. Explore the world to discover projects and skills."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- Pre-game loading screen -->
+  <div id="loading-screen">
+    <div class="loading-inner">
+      <div class="loading-logo">[WORLD.EXE]</div>
+      <div class="loading-title">WORLD OF AMAN</div>
+      <div class="loading-sub">Loading portfolio assets...</div>
+      <div class="loading-bar-wrap"><div class="loading-bar-fill" id="load-bar"></div></div>
+      <div class="loading-tip" id="load-tip">Tip: Press [E] to interact with NPCs and buildings</div>
+    </div>
+  </div>
+
+  <!-- Game container -->
+  <div id="game-wrap">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD overlays (outside canvas for DOM rendering) -->
+    <div id="hud" style="display:none">
+      <!-- Minimap -->
+      <div id="minimap-wrap">
+        <canvas id="minimap"></canvas>
+        <div class="minimap-label">MAP</div>
+      </div>
+
+      <!-- Top status bar -->
+      <div id="status-bar">
+        <div id="status-name">AMAN BANGRE</div>
+        <div id="status-info">B.Tech Mechanical · YCCE Nagpur · CGPA: 7.27</div>
+      </div>
+
+      <!-- Interaction hint -->
+      <div id="interact-hint" style="display:none">
+        <span class="key-badge">E</span> <span id="hint-text">INTERACT</span>
+      </div>
+
+      <!-- Achievement popup -->
+      <div id="achievement-popup" style="display:none">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-content">
+          <div class="ach-title">ACHIEVEMENT UNLOCKED</div>
+          <div class="ach-name" id="ach-name">Explorer</div>
+        </div>
+      </div>
+
+      <!-- Controls help -->
+      <div id="controls-help">
+        <div class="ctrl-row"><span class="key-badge">WASD</span> Move</div>
+        <div class="ctrl-row"><span class="key-badge">E</span> Interact</div>
+        <div class="ctrl-row"><span class="key-badge">ESC</span> Back / Close</div>
+      </div>
+    </div>
+
+    <!-- Dialogue overlay -->
+    <div id="dialogue-box" style="display:none">
+      <div id="dialogue-portrait">
+        <div id="dialogue-portrait-inner"></div>
+      </div>
+      <div id="dialogue-content">
+        <div id="dialogue-name"></div>
+        <div id="dialogue-text"></div>
+        <div id="dialogue-continue"><span class="key-badge">E</span> Continue ▼</div>
+      </div>
+    </div>
+
+    <!-- Interior overlay -->
+    <div id="interior-overlay" style="display:none">
+      <div id="interior-panel">
+        <button id="interior-close" aria-label="Close">✕ EXIT [ESC]</button>
+        <div id="interior-content"></div>
+      </div>
+    </div>
+
+    <!-- Mobile joystick -->
+    <div id="joystick-zone">
+      <div id="joystick-base">
+        <div id="joystick-thumb"></div>
+      </div>
+    </div>
+    <button id="mobile-interact-btn" aria-label="Interact">E</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
